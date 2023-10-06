@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        .container {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .box {
+            width: 45%;
+            border: 1px solid #ccc;
+            padding: 10px;
+        }
+    </style>
+</head>
+<body style="background-color: blue;">
+    <div class="container" style="background-color: white;border-radius: 10px;">
+        <div class="box" id="left-box" contenteditable="true">
+            Paste column data here.
+        </div>
+        
+        <div class="box" id="right-box" contenteditable="true">
+            Right side box (count will be removed).
+        </div>
+    </div>
+
+    <script>
+        const leftBox = document.getElementById('left-box');
+        const rightBox = document.getElementById('right-box');
+
+        leftBox.addEventListener('input', function () {
+            // Get the text content of the left box and remove any counts (numbers) from it
+            const text = leftBox.textContent.replace(/\d+/g, '');
+            // Set the cleaned text as the content of the right box
+            rightBox.textContent = text;
+        });
+    </script>
+</body>
+</html>
